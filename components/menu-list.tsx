@@ -42,10 +42,10 @@ export function MenuList() {
                   </a>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/shop" title="Tienda">
+              <ListItem href="/" title="Tienda">
                 Accede a toda tu informacion pedidos y más
               </ListItem>
-              <ListItem href="/offers" title="Ofertas">
+              <ListItem href="/" title="Ofertas">
                 Seccion de dedica a promociones y descuentos especiales
               </ListItem>
               <ListItem href="/" title="Accesorios">
