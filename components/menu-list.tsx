@@ -3,9 +3,9 @@
 import * as React from "react"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
-import Image from "next/image";
-import logo from "./assets/logos/logo-n.png";
-import { useRouter } from "next/navigation";
+import Image from "next/image"
+import logo from "./assets/logos/logo-n.png"
+import { useRouter } from "next/navigation"
 
 import {
   NavigationMenu,
@@ -18,7 +18,8 @@ import {
 } from "@/components/ui/navigation-menu"
 
 export function MenuList() {
-  const router = useRouter();
+  const router = useRouter()
+
   return (
     <NavigationMenu>
       <NavigationMenuList>
@@ -32,23 +33,21 @@ export function MenuList() {
                     href="/"
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                   >
-                    <div>
-                      <Image src={logo} alt="Logo" width={100} height={100} onClick={() => router.push("/")} />
-                      <div className="mb-2 mt-4 text-lg font-bold">
-                        Livi App
-                      </div>
-                      <p className="text-sm leading-tight text-muted-foreground">
-                        Una solución integral para crear y gestionar sitios web, landing pages, e-commerce y blogs de forma fácil y eficiente.
-                      </p>
+                    <Image src={logo} alt="Logo" width={100} height={100} onClick={() => router.push("/")} />
+                    <div className="mb-2 mt-4 text-lg font-bold">
+                      Livi App
                     </div>
+                    <p className="text-sm leading-tight text-muted-foreground">
+                      Una solución integral para crear y gestionar sitios web, landing pages, e-commerce y blogs de forma fácil y eficiente.
+                    </p>
                   </Link>
                 </NavigationMenuLink>
               </li>
               <ListItem href="/" title="Tienda">
-                Accede a toda tu informacion pedidos y más
+                Accede a toda tu información, pedidos y más
               </ListItem>
               <ListItem href="/" title="Ofertas">
-                Seccion de dedica a promociones y descuentos especiales
+                Sección dedicada a promociones y descuentos especiales
               </ListItem>
               <ListItem href="/" title="Accesorios">
                 Productos complementarios
@@ -73,7 +72,7 @@ export function MenuList() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/" legacyBehavior passHref>
+          <Link href="/accessories" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Accesorios
             </NavigationMenuLink>
@@ -84,37 +83,35 @@ export function MenuList() {
   )
 }
 
-export default MenuList;
+export default MenuList
 
 const components: { title: string; href: string; description: string }[] = [
   {
     title: "Pantalón",
     href: "/category/pantalon",
-    description:
-      "Prendas ajustadas a tu medida y tu necesidad",
+    description: "Prendas ajustadas a tu medida y tu necesidad",
   },
   {
     title: "Remera",
     href: "/category/remera",
-    description:
-      "Todos los estilos",
+    description: "Todos los estilos",
   },
   {
     title: "Buzo",
     href: "/category/buzo",
-    description:
-      "Buzos de todos los estilos",
+    description: "Buzos de todos los estilos",
   },
 ]
+
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
+>(({ className, title, children, href, ...props }, ref) => {
   return (
     <li>
       <NavigationMenuLink asChild>
         <Link
-          href={"/"} // Asegúrate de que `href` esté definido en `props`
+          href={href} // Usando el href dinámico
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
