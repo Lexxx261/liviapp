@@ -6,6 +6,7 @@ import { formatPrice } from "@/lib/formatPrice"
 import { cn } from "@/lib/utils"
 import { ProductType } from "@/types/product"
 import { Trash } from "lucide-react"
+import Image from "next/image"
 import { useRouter } from "next/navigation"
 
 interface LovedItemProductProps {
@@ -26,8 +27,11 @@ const LovedItemProduct = (props: LovedItemProductProps) => {
     return (
         <li className="flex py-6 border-b">
             <div onClick={() => router.push(`/product/${product.slug}`)}>
-                <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${product.images[0].url}`} alt={product.slug}
-                    className="w-24 h-24 overflow-hidden rounded-md sm:w-auto sm:h-32" />
+                <Image src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${product.images[0].url}`} alt={product.slug}
+                    className="overflow-hidden rounded-md sm:w-auto sm:h-32"
+                    width={500} // Set the width of the image
+                    height={500} // Set the height of the image
+                    />
             </div>
             <div className="flex justify-between flex-1 px-6">
                 <div>

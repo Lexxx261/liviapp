@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import IconButton from "@/components/icon-button";
 import { Expand, ShoppingCart } from "lucide-react";
-import ProductColorSize from "@/components/shared/product-color-size";
+import Image from "next/image";
 
 
 type ProductCardProps = {
@@ -33,21 +33,23 @@ const ProductCard = (props: ProductCardProps) => {
                 <CarouselContent>
                     {product.images.map((image) => (
                         <CarouselItem key={image.id} className="group">
-                            <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${image.url}`} alt="Image"
+                            <Image src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${image.url}`} alt="Image"
+                                width={180} // Set the width of the image
+                                height={180} // Set the height of the image
                                 className="rounded-xl" />
 
                             <div className="absolute w-full px-6 transition-200 opacity-0 group-hover:opacity-100 bottom-5">
                                 <div className="flex justify-center gap-x-6">
-                                    <IconButton onClick={() => router.push(`/product/${product.slug}`)} icon={<Expand size={20} className="text-gray-600"/>} />
-                                    <IconButton onClick={() => console.log("product")} icon={<ShoppingCart size={20} className="text-gray-600"/>} />
+                                    <IconButton onClick={() => router.push(`/product/${product.slug}`)} icon={<Expand size={20} className="text-gray-600" />} />
+                                    <IconButton onClick={() => console.log("product")} icon={<ShoppingCart size={20} className="text-gray-600" />} />
                                 </div>
                             </div>
                         </CarouselItem>
                     ))}
                 </CarouselContent>
             </Carousel>
-                    <p className="text-2xl text-center">{product.ProductName}</p>
-                    <p className="font-bold text-center">{formatPrice (Number(product.Price))}</p>
+            <p className="text-2xl text-center">{product.ProductName}</p>
+            <p className="font-bold text-center">{formatPrice(Number(product.Price))}</p>
         </Link>
 
 

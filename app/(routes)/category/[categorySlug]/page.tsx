@@ -15,7 +15,6 @@ export default function Page() {
     const { categorySlug } = params
     const { result, loading }: ResponseType = useGetCategoryProduct(categorySlug || "")
     const [filterColor, setfilterColor] = useState('')
-    const router = useRouter()
 
     const filteredProducts = result !== null && !loading && (
         filterColor === '' ? result : result.filter((product: ProductType) => product.Color === filterColor)

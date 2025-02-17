@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/navigation-menu"
 
 export function MenuList() {
-    const router = useRouter();
+  const router = useRouter();
   return (
     <NavigationMenu>
       <NavigationMenuList>
@@ -28,18 +28,20 @@ export function MenuList() {
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
-                  <a
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                  <Link
                     href="/"
+                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                   >
-                    <Image src={logo} alt="Logo" width={100} height={100} onClick={() => router.push("/")} />
-                    <div className="mb-2 mt-4 text-lg font-bold">
-                      Livi App
+                    <div>
+                      <Image src={logo} alt="Logo" width={100} height={100} onClick={() => router.push("/")} />
+                      <div className="mb-2 mt-4 text-lg font-bold">
+                        Livi App
+                      </div>
+                      <p className="text-sm leading-tight text-muted-foreground">
+                        Una solución integral para crear y gestionar sitios web, landing pages, e-commerce y blogs de forma fácil y eficiente.
+                      </p>
                     </div>
-                    <p className="text-sm leading-tight text-muted-foreground">
-                    Una solución integral para crear y gestionar sitios web, landing pages, e-commerce y blogs de forma fácil y eficiente.
-                    </p>
-                  </a>
+                  </Link>
                 </NavigationMenuLink>
               </li>
               <ListItem href="/" title="Tienda">
@@ -85,25 +87,25 @@ export function MenuList() {
 export default MenuList;
 
 const components: { title: string; href: string; description: string }[] = [
-    {
-      title: "Pantalón",
-      href: "/category/pantalon",
-      description:
-        "Prendas ajustadas a tu medida y tu necesidad",
-    },
-    {
-      title: "Remera",
-      href: "/category/remera",
-      description:
-        "Todos los estilos",
-    },
-    {
-      title: "Buzo",
-      href: "/category/buzo",
-      description:
-        "Buzos de todos los estilos",
-    },
-  ]
+  {
+    title: "Pantalón",
+    href: "/category/pantalon",
+    description:
+      "Prendas ajustadas a tu medida y tu necesidad",
+  },
+  {
+    title: "Remera",
+    href: "/category/remera",
+    description:
+      "Todos los estilos",
+  },
+  {
+    title: "Buzo",
+    href: "/category/buzo",
+    description:
+      "Buzos de todos los estilos",
+  },
+]
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a">
@@ -111,8 +113,8 @@ const ListItem = React.forwardRef<
   return (
     <li>
       <NavigationMenuLink asChild>
-        <a
-          ref={ref}
+        <Link
+          href={"/"} // Asegúrate de que `href` esté definido en `props`
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
@@ -123,7 +125,7 @@ const ListItem = React.forwardRef<
           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
           </p>
-        </a>
+        </Link>
       </NavigationMenuLink>
     </li>
   )
