@@ -106,12 +106,12 @@ const components: { title: string; href: string; description: string }[] = [
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, href, ...props }, ref) => {
+>(({ className, title, children, href, ...props }) => {
   return (
     <li>
       <NavigationMenuLink asChild>
         <Link
-          href={href} // Usando el href dinámico
+          href={href}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
